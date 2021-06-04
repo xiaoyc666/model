@@ -1,25 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+class App extends React.Component{
+  constructor(){
+    super();
+    this.state={visible:'none'}
+  }
+
+
+  handChange=()=>{
+    this.setState({visible:'none'})
+  }
+  render(){
+    return(
+      <div>
+        <button className="btn1"onClick={()=>this.setState({visible:'block'})}>点击打开对话框</button>
+        <div className='div' style={{display:this.state.visible}}>
+          <h3 style={{textAlign:'center'}}>确认删除账号？</h3><br/>
+          <button className="btn" onClick={this.handChange}>确认</button><button className="btn" style={{right:0}} onClick={this.handChange}>取消</button>
+        </div>
+      </div>
+    )
+  }
+  
+
+
+} 
 
 export default App;
